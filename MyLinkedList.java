@@ -28,16 +28,27 @@ public class MyLinkedList {
     }
   }
 
+  private Node getNode(int index) {
+    Node currentNode;
+    if (size - index - 1 > index) {
+      currentNode = start;
+      for (int i = 0; i < index; i++) {
+        currentNode = currentNode.getNext();
+      }
+    } else {
+      currentNode = end;
+      for (int i = 0; i < size - index - 1; i++) {
+        currentNode = currentNode.getPrev();
+      }
+    }
+    return currentNode;
+  }
+
   public void add(int index, String value) {
     if (index == size){
       add(value);
     } else {
-      int currentIndex = 0;
-      Node currentNode = start;
-      while (currentIndex < index) {
-        currentIndex ++;
-        currentNode = currentNode.getNext();
-      }
+      Node currentNode = getNode(index);
       Node n = new Node(value);
       n.setPrev(currentNode.getPrev());
       n.setNext(currentNode);
@@ -53,10 +64,7 @@ public class MyLinkedList {
   }
 
   public String get(int index) {
-    Node currentNode = start;
-    for (int i = 0; i < index; i++) {
-      currentNode = currentNode.getNext();
-    }
+    Node currentNode = getNode(index);
     return currentNode.getValue();
   }
 
