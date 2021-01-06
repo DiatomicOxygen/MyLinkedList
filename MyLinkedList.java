@@ -72,7 +72,7 @@ public class MyLinkedList {
     Node currentNode = getNode(index);
     String ans = currentNode.getValue();
     currentNode.setValue(value);
-    return ans; 
+    return ans;
   }
 
   public String toString() {
@@ -88,4 +88,19 @@ public class MyLinkedList {
     ans += "]";
     return ans;
   }
+/*
+  public String reverseToString() {
+    String ans = "[";
+    Node currentNode = end;
+    for (int i = 0; i < size; i++) {
+      ans += currentNode.getValue();
+      if (i != size - 1) {
+        ans += ", ";
+      }
+      currentNode = currentNode.getPrev();
+    }
+    ans += "]";
+    return ans;
+  }
+*/
 }
