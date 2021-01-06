@@ -18,5 +18,17 @@ public class Node {
   public void setPrev(Node n) {
     prev = n;
   }
-  
+
+  public String getData() {
+    return data;
+  }
+
+  public Node getNext() {
+    return next;
+  }
+
+  public Node getPrev() {
+    return prev;
+  }
+
 }
