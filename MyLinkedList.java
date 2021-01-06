@@ -68,6 +68,13 @@ public class MyLinkedList {
     return currentNode.getValue();
   }
 
+  public String set(int index, String value) {
+    Node currentNode = getNode(index);
+    String ans = currentNode.getValue();
+    currentNode.setValue(value);
+    return ans; 
+  }
+
   public String toString() {
     String ans = "[";
     Node currentNode = start;
