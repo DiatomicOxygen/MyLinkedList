@@ -29,19 +29,40 @@ public class MyLinkedList {
   }
 
   public void add(int index, String value) {
-    int currentIndex = 0;
+    if (index == size){
+      add(value);
+    } else {
+      int currentIndex = 0;
+      Node currentNode = start;
+      while (currentIndex < index) {
+        currentIndex ++;
+        currentNode = currentNode.getNext();
+      }
+      Node n = new Node(value);
+      n.setPrev(currentNode.getPrev());
+      n.setNext(currentNode);
+      currentNode.setPrev(n);
+      if (index > 0) {
+        n.getPrev().setNext(n);
+      }
+      if (index == 0) {
+        start = n;
+      }
+      size++;
+    }
+  }
+
+  public String toString() {
+    String ans = "[";
     Node currentNode = start;
-    while (currentIndex < index) {
-      currentIndex ++;
+    for (int i = 0; i < size; i++) {
+      ans += currentNode.getData();
+      if (i != size - 1) {
+        ans += ", ";
+      }
       currentNode = currentNode.getNext();
     }
-    Node n = new Node(value);
-    n.setNext(currentNode.getNext());
-    n.setPrev(currentNode);
-    currentNode.setNext(n);
-    if (size - 1 > index) {
-      n.getNext().setPrev(n);
-    }
-    size++;
+    ans += "]";
+    return ans;
   }
 }
