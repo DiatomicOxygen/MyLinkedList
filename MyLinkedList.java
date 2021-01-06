@@ -52,11 +52,19 @@ public class MyLinkedList {
     }
   }
 
+  public String get(int index) {
+    Node currentNode = start;
+    for (int i = 0; i < index; i++) {
+      currentNode = currentNode.getNext();
+    }
+    return currentNode.getValue();
+  }
+
   public String toString() {
     String ans = "[";
     Node currentNode = start;
     for (int i = 0; i < size; i++) {
-      ans += currentNode.getData();
+      ans += currentNode.getValue();
       if (i != size - 1) {
         ans += ", ";
       }
