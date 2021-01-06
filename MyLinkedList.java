@@ -27,4 +27,21 @@ public class MyLinkedList {
       return true;
     }
   }
+
+  public void add(int index, String value) {
+    int currentIndex = 0;
+    Node currentNode = start;
+    while (currentIndex < index) {
+      currentIndex ++;
+      currentNode = currentNode.getNext();
+    }
+    Node n = new Node(value);
+    n.setNext(currentNode.getNext());
+    n.setPrev(currentNode);
+    currentNode.setNext(n);
+    if (size - 1 > index) {
+      n.getNext().setPrev(n);
+    }
+    size++;
+  }
 }
