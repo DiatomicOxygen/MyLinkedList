@@ -89,7 +89,7 @@ public class MyLinkedList {
     return ans;
   }
 /*
-  public String reverseToString() {
+  public String toStringReversed() {
     String ans = "[";
     Node currentNode = end;
     for (int i = 0; i < size; i++) {
