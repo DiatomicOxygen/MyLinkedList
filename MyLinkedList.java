@@ -88,7 +88,7 @@ public class MyLinkedList {
     ans += "]";
     return ans;
   }
-/*
+
   public String toStringReversed() {
     String ans = "[";
     Node currentNode = end;
@@ -102,5 +102,38 @@ public class MyLinkedList {
     ans += "]";
     return ans;
   }
-*/
+
+  public String remove(int index) {
+    if (index == 0) {
+      if (size == 1) {
+        size = 0;
+        String oldStart = start.getValue();
+        start = null;
+        end = null;
+        return oldStart;
+      }
+
+      String oldStart = start.getValue();
+      start = start.getNext();
+      start.setPrev(null);
+      size--;
+      return oldStart;
+    }
+
+    if (index == size - 1) {
+      String oldEnd = end.getValue();
+      end = end.getPrev();
+      end.setNext(null);
+      size--;
+      return oldEnd;
+    }
+
+    Node n = getNode(index);
+    Node next = n.getNext();
+    Node prev = n.getPrev();
+    next.setPrev(prev);
+    prev.setNext(next);
+    size--;
+    return n.getValue();
+  }
 }
