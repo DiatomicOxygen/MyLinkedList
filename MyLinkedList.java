@@ -45,6 +45,13 @@ public class MyLinkedList {
   }
 
   public void add(int index, String value) {
+    if (index < 0) {
+      throw new IndexOutOfBoundsException("Please use a positive index!");
+    }
+    if (index > size) {
+      throw new IndexOutOfBoundsException("Please use an index less than or equal to " + size + "!");
+    }
+
     if (index == size){
       add(value);
     } else {
@@ -64,11 +71,32 @@ public class MyLinkedList {
   }
 
   public String get(int index) {
+    if (index < 0) {
+      throw new IndexOutOfBoundsException("Please use a positive index!");
+    }
+
+    if (index >= size) {
+      if (size == 0) {
+        throw new  IndexOutOfBoundsException("This is an empty LinkedList!");
+      }
+      throw new IndexOutOfBoundsException("Please use an index less than " + size + "!");
+    }
+
     Node currentNode = getNode(index);
     return currentNode.getValue();
   }
 
   public String set(int index, String value) {
+    if (index < 0) {
+      throw new IndexOutOfBoundsException("Please use a positive index!");
+    }
+    if (index >= size) {
+      if (size == 0) {
+        throw new  IndexOutOfBoundsException("This is an empty LinkedList!");
+      }
+      throw new IndexOutOfBoundsException("Please use an index less than " + size + "!");
+    }
+
     Node currentNode = getNode(index);
     String ans = currentNode.getValue();
     currentNode.setValue(value);
@@ -104,6 +132,17 @@ public class MyLinkedList {
   }
 
   public String remove(int index) {
+    if (index < 0) {
+      throw new IndexOutOfBoundsException("Please use a positive index!");
+    }
+
+    if (index >= size) {
+      if (size == 0) {
+        throw new  IndexOutOfBoundsException("This is an empty LinkedList!");
+      }
+      throw new IndexOutOfBoundsException("Please use an index less than " + size + "!");
+    }
+
     if (index == 0) {
       if (size == 1) {
         size = 0;
